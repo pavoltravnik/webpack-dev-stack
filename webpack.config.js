@@ -18,6 +18,7 @@ module.exports = env => {
             sw: './src/app/sw.js'
         },
         output: {
+            publicPath: '/',
             filename: '[name].js',
             path: path.resolve(__dirname, 'dist'),
             globalObject: 'this'

@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import AppContext from 'Helpers/context';
 import './style';
-import SampleIcon from 'Icons/sample';
-import SampleImage from 'Images/sample';
+
+import { Card, CardBody, Button, CardTitle, CardText, CardImg, Row, Col } from 'reactstrap';
+
 
 export default class SampleComponent extends Component {
     static contextType = AppContext;
@@ -18,16 +19,21 @@ export default class SampleComponent extends Component {
 
         return (
             <div>
-                <p>SVG images are converted to Base64 and imported directly to JS bundle.</p>
-                <p>Image on the left side is the SVG file (bundeled with JS); on the right side is the PNG file (loaded with another request).</p>
-
                 <Fragment>
-                    <img className="sample-image" src={SampleIcon} alt="Sample SVG icon" />
-                    <img className="sample-image" src={SampleImage} alt="Sample JPG image" />
-
                     <p>{testValue}</p>
+                    <Button type="button" onClick={() => this.handleValueUpdate(Math.random())}>Update AppContext</Button>
 
-                    <button type="button" onClick={() => this.handleValueUpdate(Math.random())}>Update AppContext</button>
+                    <Row>
+                        <Col sm="4">
+                            <Card>
+                                <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+                                <CardBody>
+                                    <CardTitle>Card Title</CardTitle>
+                                    <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                    </Row>
                 </Fragment>
             </div>
         );

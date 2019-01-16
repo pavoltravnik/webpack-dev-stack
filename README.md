@@ -1,4 +1,6 @@
 ## Overview
+Cash register.
+
 Webpack-powered dev-stack using newest technologies. Great for both web and PWA apps.
 
 ## Features
@@ -22,7 +24,7 @@ Webpack-powered dev-stack using newest technologies. Great for both web and PWA 
 
 ## Getting started
 Step 1: Install dependencies using `npm install`.
-Step 2: Run webpack-dev-server using `npm run dev` (running app should be accessible on `localhost:8080` by default).
+Step 2: Run webpack-dev-server and node.js backend using `npm run all` (running app should be accessible on `localhost:8080` by default).
 Step 3 (optional): Run build script using `npm run build`. Builded files will be in `/dist` folder.
 
 ## License

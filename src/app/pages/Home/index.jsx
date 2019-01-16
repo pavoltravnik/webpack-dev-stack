@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Layout_Main from 'Layouts/Main';
-import SampleComponent from 'Components/SampleComponent';
+import ItemsList from 'Components/ItemsList';
+import ShoppingCart from 'Components/ShoppingCart';
 
 export default class Page_Home extends Component {
     constructor() {
@@ -19,9 +20,8 @@ export default class Page_Home extends Component {
         return (
             <section>
                 <Layout_Main page={page}>
-                    <h1>{page.label}</h1>
-
-                    <SampleComponent />
+                    <ItemsList />
+                    <ShoppingCart />
                 </Layout_Main>
             </section>
         );

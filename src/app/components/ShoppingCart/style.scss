@@ -1,0 +1,21 @@
+[data-component="ShoppingCart"] {
+    padding: 12px 0;
+
+    p {
+        line-height: 150%;
+
+        & + p {
+            margin-top: 10px;
+        }
+    }
+
+    p.total {
+        padding-left: 8px;
+        padding-top: 10px;
+        font-weight: bold;
+    }
+
+    table.shopping {
+        max-width: 800px;
+    }
+}

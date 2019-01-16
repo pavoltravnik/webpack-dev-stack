@@ -1,0 +1,53 @@
+[data-component="NumPad"] {
+    padding: 12px 0;
+
+    p {
+        line-height: 150%;
+
+        & + p {
+            margin-top: 10px;
+        }
+    }
+
+    $button: rgb(99, 99, 99);
+    $active: darken($button, 5%);
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .input-num {
+        padding: 8px;
+        display: block;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        width: 420px;
+        margin-bottom: 15px;
+        margin-top: 15px;
+    }
+
+    .numpad {
+        padding-top: 15px;
+        width: 420px;
+        height: 500px;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1 0 33.3333%;
+        background-color: $button;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, .25);
+
+        &:nth-of-type(10) {
+            flex-basis: 66.6667%;
+        }
+
+        &:hover {
+            background-color: $active;
+        }
+    }
+}
