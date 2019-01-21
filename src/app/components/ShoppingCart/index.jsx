@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Context as AppContext, _f } from '@honzachalupa/helpers';
 import './style';
 import ItemCart from 'Components/ItemCart';
+
 export default class ShoppingCart extends Component {
     static contextType = AppContext;
 
@@ -15,8 +16,8 @@ export default class ShoppingCart extends Component {
 
     render() {
         const { items, ordered } = this.context;
+
         const cart = this.intersectionCartList(ordered, items);
-        const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
         return (
             <div>
@@ -29,15 +30,14 @@ export default class ShoppingCart extends Component {
                         }
                     </tbody>
                 </table>
-                {
-                    cart.length > 0 && (
-                        <p className="total">
-                            Celkem:
-                            {' '}
-                            {_f.formatCurrency(cart.map(item => item.amount * item.price).reduce(reducer))}
-                        </p>
-                    )
-                }
+                {cart.length > 0 && (
+                    <p className="total">
+                        Celkem:
+                        {' '}
+                        {_f.formatCurrency(cart.map(item => item.amount * item.price)
+                            .reduce((accumulator, value) => accumulator + value))}
+                    </p>
+                )}
             </div>
         );
     }

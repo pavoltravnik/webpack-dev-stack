@@ -14,39 +14,65 @@ export default class NumPad extends Component {
 
     componentDidMount() {
         const { id } = this.props;
-        this.setState({ id });
+
+        this.setState({
+            id
+        });
     }
 
     @autobind
-    handleChange(event) {
-        this.setState({ amount: event.target.value });
+    handleChange(e) {
+        const { value: amount } = e.target;
+
+        this.setState({
+            amount
+        });
     }
 
     @autobind
-    handleNumpad(amount, addition) {
-        amount = Number(`${amount}${addition}`);
-        this.setState({ amount });
+    handleNumpad(addition) {
+        this.setState(prevState => ({
+            amount: Number(`${prevState.amount}${addition}`)
+        }));
     }
+
+    // To-do: Chybí možnost mazání znaků bez fyzické klávesnice
 
     render() {
         const { _addToCart } = this.context;
         const { id, amount } = this.state;
         const { item } = this.props;
+
+        const buttonNumPad = char => {
+            return <div key={char} className="button" onClick={() => this.handleNumpad(char)}>{char}</div>;
+        };
+
         const NumPadTable = () => {
             const items = [];
             for (let i = 1; i < 10; i += 1) {
-                items.push(<div key={i} className="button" onClick={() => this.handleNumpad(amount, i)}>{i}</div>);
+                items.push(
+                    buttonNumPad(i) // To-do: Vytvoř pro tohle funkci, která Ti toto HTML vrátí + to samé níže
+                );
             }
-            items.push(<div key="0" className="button" onClick={() => this.handleNumpad(amount, 0)}>0</div>);
+
+            items.push(
+                buttonNumPad(0) // To-do: ...zde
+            );
+
             return items;
         };
 
         return (
             <div>
-                <p><b>{item.title}</b></p>
+                <p>
+                    {item.title}
+                </p>
+
                 <input type="number" value={amount} className="input-num" onChange={this.handleChange} />
+
                 <div className="numpad">
                     <NumPadTable />
+
                     <Link to="/" key="add" className="button" onClick={() => _addToCart(id, amount)}>Add to cart</Link>
                 </div>
             </div>

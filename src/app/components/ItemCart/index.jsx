@@ -8,14 +8,13 @@ export default class ItemCart extends Component {
     render() {
         const { title, amount, price, id } = this.props;
         const { _removeItem } = this.context;
-        const total = amount * price;
 
         return (
             <tr>
                 <td>{title}</td>
                 <td>{_f.formatCurrency(price)}</td>
                 <td>{_f.formatCurrency(amount)}</td>
-                <td>{_f.formatCurrency(total)}</td>
+                <td>{_f.formatCurrency(amount * price)}</td>
                 <td><button type="button" key="0" className="button" onClick={() => _removeItem(id)}>X</button></td>
             </tr>
 

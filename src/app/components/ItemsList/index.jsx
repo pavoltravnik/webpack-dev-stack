@@ -11,7 +11,9 @@ export default class ItemsList extends Component {
 
         return (
             <div className="flex-containers">
-                {items.map(item => (<Item key={item.id} {...item} />))}
+                {items.map(item => (
+                    <Item key={item.id} {...item} />
+                ))}
             </div>
         );
     }

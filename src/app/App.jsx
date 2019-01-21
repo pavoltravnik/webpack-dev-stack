@@ -33,20 +33,17 @@ class App extends Component {
     componentDidMount() {
         fetch('http://localhost:3000')
             .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        items: result
-                    });
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            );
+            .then(result => {
+                this.setState({
+                    isLoaded: true,
+                    items: result
+                });
+            }).catch(error => {
+                this.setState({
+                    isLoaded: true,
+                    error
+                });
+            });
     }
 
     /**

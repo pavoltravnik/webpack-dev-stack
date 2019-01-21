@@ -8,8 +8,7 @@ export default class Item extends Component {
     static contextType = AppContext;
 
     render() {
-        const { title, price } = this.props;
-        const { id } = this.props;
+        const { id, title, price } = this.props;
         const { ordered } = this.context;
 
         const isAddVisible = ordered.find(item => item.id === id);
@@ -18,9 +17,10 @@ export default class Item extends Component {
             <div className="flex-container">
                 <p>{title}</p>
                 <p>{_f.formatCurrency(price)}</p>
-                {
-                    !isAddVisible && <Link to={`/numpad/${id}`} type="button" className="button-link" color="primary" size="sm">Add</Link>
-                }
+
+                {!isAddVisible && (
+                    <Link to={`/numpad/${id}`} type="button" className="button-link" color="primary" size="sm">Add</Link>
+                )}
             </div>
         );
     }
